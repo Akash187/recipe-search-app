@@ -1,3 +1,69 @@
+@import '~antd/dist/antd.css';
+
+:root {
+    --spacing-large: 3.6rem;
+    --spacing-medium: 2.4rem;
+    --spacing-small: 1.6rem;
+    --spacing-verySmall: 0.8rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
 .newFont{
     font-family: 'Courgette', cursive;
+}
+
+#title{
+    font-size: 4.8rem;
+    padding-top: var(--spacing-large);
+    margin-bottom: var(--spacing-medium);
+    text-align: center;
+}
+
+#title span{
+    color: #FF052F;
+}
+
+#searchTitle{
+    font-size: 3.2rem;
+    margin-bottom: var(--spacing-small);
+    text-align: center;
+    font-weight: 500;
+}
+
+#searchBar{
+    width: 70%;
+    margin-left: 15%;
+}
+
+#listTitle{
+    font-size: 4.8rem;
+    margin: var(--spacing-medium) 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 800px) {
+    #title{
+        font-size: 5vw;
+        padding-top: var(--spacing-medium);
+        margin-bottom: var(--spacing-small);
+    }
+
+    #searchTitle{
+        font-size: 3vw;
+        margin-bottom: var(--spacing-verySmall);
+    }
+
+    #searchBar{
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    #listTitle{
+        font-size: 5vm;
+        margin: var(--spacing-small) 0;
+    }
 }
