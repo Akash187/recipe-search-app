@@ -6,7 +6,7 @@ const Search = Input.Search;
 
 const Main = (props) => {
   return (
-    <div>
+    <div style={{marginBottom: '2rem'}}>
       <div id="title" className="newFont">Search For Recipe With <span>Food2Fork</span></div>
       <div id="searchTitle">Type Recipes Separated By Comma</div>
       <div id="searchBar">
