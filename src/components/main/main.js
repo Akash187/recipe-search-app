@@ -11,8 +11,8 @@ const Main = (props) => {
       <div id="searchTitle">Type Recipes Separated By Comma</div>
       <div id="searchBar">
       <Search
-        placeholder="input search text"
-        onSearch={value => console.log(value)}
+        placeholder="chicken,onions,carrots"
+        onSearch={value => props.fetchRecipe(value)}
         enterButton size="large"
       />
       </div>

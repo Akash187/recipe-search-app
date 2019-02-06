@@ -10,7 +10,8 @@ export default class Routes extends React.Component{
     recipes : []
   };
 
-  fetchRecipe = () => {
+  fetchRecipe = (recipe) => {
+    console.log(recipe);
     this.setState({
       recipes
     })
@@ -25,7 +26,7 @@ export default class Routes extends React.Component{
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={() => (
-            <Main recipes={this.state.recipes}/>
+            <Main recipes={this.state.recipes} fetchRecipe={this.fetchRecipe}/>
           )}/>
           <Route exact path="/recipe/:id" component={Detail}/>
         </Switch>

@@ -54,6 +54,51 @@ html {
     justify-content: center;
 }
 
+.ant-card-meta-description{
+    color: orange;
+    font-family: 'Courgette', cursive;
+    font-size: 1.6rem;
+}
+
+.detailPage{
+    display: flex;
+    margin: 2rem 5rem;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.detailImg{
+    height: 40rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.detailRecipeTitle{
+    font-size: 2.4rem;
+}
+
+.detailRecipePublisher{
+    color: orange;
+    font-family: 'Courgette', cursive;
+    font-size: 1.6rem;
+    margin: var(--spacing-small) 0;
+}
+
+.btnContainer{
+    margin-bottom: var(--spacing-medium);
+}
+
+@media screen and (max-width: 56rem) {
+
+    .detailPage{
+        margin: 1rem 2rem;
+    }
+
+    .detailImg{
+        height: 32rem;
+    }
+}
+
 @media screen and (max-width: 80rem) {
     #title{
         font-size: 5vw;
