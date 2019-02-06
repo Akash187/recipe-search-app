@@ -62,7 +62,7 @@ html {
 
 .detailPage{
     display: flex;
-    margin: 2rem 5rem;
+    padding: 2rem 5rem;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
@@ -88,10 +88,17 @@ html {
     margin-bottom: var(--spacing-medium);
 }
 
+.detailSpinner{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 56rem) {
 
     .detailPage{
-        margin: 1rem 2rem;
+        padding: 1rem 2rem;
     }
 
     .detailImg{

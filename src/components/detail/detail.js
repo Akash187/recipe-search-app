@@ -1,11 +1,16 @@
 import React from 'react';
-import {recipe} from "../../tempDetail";
-import { Button, List } from 'antd';
+//import {recipe} from "../../tempDetail";
+import { Button, List, Spin, Alert } from 'antd';
 
 export default class Detail extends React.Component{
 
   state={
-    recipe: {}
+    recipe: {},
+    api_key : process.env.REACT_APP_FOOD2FORK_API_KEY,
+    api_url : 'https://www.food2fork.com/api/get',
+    id : this.props.match.params.id,
+    fetchingData: true,
+    errorFetching: false
   };
 
   backBtnStyle = {
@@ -27,19 +32,37 @@ export default class Detail extends React.Component{
     fontSize: '1.6rem'
   };
 
-  fetchRecipe = (name) => {
-    console.log(name);
+  fetchRecipe = async (name) => {
+    let res = await fetch(`${this.state.api_url}?key=${this.state.api_key}&rId=${this.state.id}`);
+    let data = await res.json();
     this.setState({
-      recipe
+      recipe: data.recipe
     })
   };
 
   componentDidMount(){
-    this.fetchRecipe();
+    window.scrollTo(0, 0);
+    this.fetchRecipe().then((success) => {
+      this.setState({
+        fetchingData: false
+      })
+    }).catch(e => {
+      this.setState({
+        errorFetching: true,
+        fetchingData: false
+      })
+    });
   }
 
   render(){
     return (
+      (this.state.fetchingData) ?
+        <div className="detailSpinner">
+          <Spin size="large" tip="Loading..." />
+        </div>
+       : (this.state.errorFetching) ?
+        <h1 style={{textAlign: 'center', color: 'red'}}>Error! Fetching Recipe.</h1>
+        :
       <div className="detailPage">
         <div className="imageContainer">
           <Button
@@ -75,7 +98,7 @@ export default class Detail extends React.Component{
             >Recipe Url</Button>
           </div>
           <h1>Ingredients</h1>
-          <List
+          <List style={{width : '100%'}}
             bordered
             dataSource={this.state.recipe.ingredients}
             renderItem={item => (
