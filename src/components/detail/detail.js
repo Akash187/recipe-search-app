@@ -1,11 +1,12 @@
 import React from 'react';
 //import {recipe} from "../../tempDetail";
-import { Button, List, Spin, Alert } from 'antd';
+import { Button, List, Spin} from 'antd';
+import Spinner from "../spinner/spinner";
 
 export default class Detail extends React.Component{
 
   state={
-    recipe: {},
+    recipes: [],
     api_key : process.env.REACT_APP_FOOD2FORK_API_KEY,
     api_url : 'https://www.food2fork.com/api/get',
     id : this.props.match.params.id,
@@ -32,7 +33,7 @@ export default class Detail extends React.Component{
     fontSize: '1.6rem'
   };
 
-  fetchRecipe = async (name) => {
+  fetchRecipe = async () => {
     let res = await fetch(`${this.state.api_url}?key=${this.state.api_key}&rId=${this.state.id}`);
     let data = await res.json();
     this.setState({
@@ -57,9 +58,7 @@ export default class Detail extends React.Component{
   render(){
     return (
       (this.state.fetchingData) ?
-        <div className="detailSpinner">
-          <Spin size="large" tip="Loading..." />
-        </div>
+        <Spinner cssClass="detailSpinner"/>
        : (this.state.errorFetching) ?
         <h1 style={{textAlign: 'center', color: 'red'}}>Error! Fetching Recipe.</h1>
         :

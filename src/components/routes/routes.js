@@ -1,36 +1,15 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {recipes} from '../../tempList';
 import Main from "../main/main";
 import Detail from "../detail/detail";
 
-export default class Routes extends React.Component{
+const Routes = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Main}/>
+      <Route exact path="/recipe/:id" component={Detail}/>
+    </Switch>
+  </BrowserRouter>
+);
 
-  state = {
-    recipes : []
-  };
-
-  fetchRecipe = (recipe) => {
-    console.log(recipe);
-    this.setState({
-      recipes
-    })
-  };
-
-  componentDidMount(){
-    this.fetchRecipe();
-  }
-
-  render(){
-    return(
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" render={() => (
-            <Main recipes={this.state.recipes} fetchRecipe={this.fetchRecipe}/>
-          )}/>
-          <Route exact path="/recipe/:id" component={Detail}/>
-        </Switch>
-      </BrowserRouter>
-    )
-  }
-};
+export default Routes;
