@@ -47,7 +47,7 @@ export default class Routes extends React.Component{
 
   fetchMoreData = () => {
 
-    if (this.state.recipes.length >= 80) {
+    if (this.state.recipes.length >= 90) {
       this.setState({ hasMore: false });
       return;
     }
