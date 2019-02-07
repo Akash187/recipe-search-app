@@ -1,6 +1,5 @@
 import React from 'react';
-//import {recipe} from "../../tempDetail";
-import { Button, List, Spin} from 'antd';
+import { Button, List} from 'antd';
 import Spinner from "../spinner/spinner";
 
 export default class Detail extends React.Component{
@@ -42,7 +41,7 @@ export default class Detail extends React.Component{
   };
 
   componentDidMount(){
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     this.fetchRecipe().then((success) => {
       this.setState({
         fetchingData: false
